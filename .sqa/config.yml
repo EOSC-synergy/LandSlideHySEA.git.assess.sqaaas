@@ -1,0 +1,52 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: release/2.1.1
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/edanya-uma/LandSlideHySEA:
+      branch: main
+      repo: https://github.com/edanya-uma/LandSlideHySEA.git
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/edanya-uma/LandSlideHySEA git:
+        commands:
+        - /usr/bin/env sh .sqa/script.homely-emerald-sparrow.sh
+        container: qc.acc_paltry-smalt-donkey
+  QC.Doc:
+    repos:
+      github.com/edanya-uma/LandSlideHySEA find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.cozy-fuchsia-balinese.sh
+        container: qc.doc_grumpy-vermilion-saola
+      github.com/edanya-uma/LandSlideHySEA git:
+        commands:
+        - /usr/bin/env sh .sqa/script.tacky-taupe-squid.sh
+        container: qc.doc_paltry-yellow-mandrill
+      github.com/edanya-uma/LandSlideHySEA markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.zippy-charcoal-squirt.sh
+        container: qc.doc_woozy-chocolate-frog
+  QC.Lic:
+    repos:
+      github.com/edanya-uma/LandSlideHySEA licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.skimpy-tan-ocelot.sh
+        container: qc.lic_queasy-amaranth-vole
+  QC.Sty:
+    repos:
+      github.com/edanya-uma/LandSlideHySEA oclint:
+        commands:
+        - /usr/bin/env sh .sqa/script.skimpy-persimmon-crane.sh
+        container: qc.sty_lovely-khaki-budgerigar
+  QC.Ver:
+    repos:
+      github.com/edanya-uma/LandSlideHySEA get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.foggy-maroon-reindeer.sh
+        container: qc.ver_stinky-blue-macaw
+timeout: 5400
